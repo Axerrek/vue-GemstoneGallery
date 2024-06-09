@@ -1,0 +1,120 @@
+/* Resetowanie stylów */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Style dla nawigacji */
+nav {
+  padding: 1em;
+  background-color: purple;
+  border: double white 0.2em;
+}
+
+/* Style dla głównego kontenera aplikacji */
+#app {
+  font-family: Arial, sans-serif;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Style dla nagłówka */
+h1 {
+  margin-bottom: 20px;
+}
+
+/* Style dla treści */
+p {
+  line-height: 1.5;
+}
+body {
+  background-image: url("assets/background.jpg");
+  background-size: cover; /* Dopasowanie obrazu do rozmiaru okna przeglądarki */
+  background-position: center; /* Wyśrodkowanie obrazu */
+  background-repeat: no-repeat; /* Zapobieganie powielaniu obrazu */
+  height: 100vh;
+  width: 100vw;
+  color: white;
+}
+
+.main {
+  background-color: rebeccapurple;
+  min-height: 60vh;
+  padding: 1em;
+}
+/* CSS */
+button {
+  margin-left: 0.5em;
+  margin-right: 0.5em;
+  align-items: center;
+  appearance: none;
+  background-image: radial-gradient(
+    100% 100% at 100% 0,
+    #5adaff 0,
+    #5468ff 100%
+  );
+  border: 0;
+  border-radius: 6px;
+  box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,
+    rgba(45, 35, 66, 0.3) 0 7px 13px -3px, rgba(58, 65, 111, 0.5) 0 -3px 0 inset;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: "JetBrains Mono", monospace;
+  height: 48px;
+  justify-content: center;
+  line-height: 1;
+  list-style: none;
+  overflow: hidden;
+  padding-left: 16px;
+  padding-right: 16px;
+  position: relative;
+  text-align: left;
+  text-decoration: none;
+  transition: box-shadow 0.15s, transform 0.15s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  will-change: box-shadow, transform;
+  font-size: 18px;
+}
+
+button:focus {
+  box-shadow: #3c4fe0 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px,
+    rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
+}
+
+button:hover {
+  box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px,
+    rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
+  transform: translateY(-2px);
+}
+
+button:active {
+  box-shadow: #3c4fe0 0 3px 7px inset;
+  transform: translateY(2px);
+}
+
+.product-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.product {
+  border: solid black 0.1em;
+  margin: 1em;
+  padding: 1em;
+  width: 15em;
+  background-color: #5468ff;
+  text-align: center;
+  min-height: 20em;
+}
+.product img {
+  border: solid black 0.1em;
+  width: 10em;
+  height: 10em;
+  object-fit: cover; /* ensure the image fits within the specified dimensions */
+}
