@@ -43,18 +43,25 @@ export default {
   },
   computed: {
     cartTotal() {
-      return this.cart.reduce((total, gem) => total + gem.price, 0);
+      return this.cart.reduce(
+        (total, gem) => total + gem.price * gem.quantity,
+        0
+      );
     },
   },
   methods: {
     addToCart(gem) {
-      this.cart.push(gem);
+      const cartItem = this.cart.find((item) => item.id === gem.id);
+      if (cartItem) {
+        cartItem.quantity++;
+      } else {
+        this.cart.push({ ...gem, quantity: 1 });
+      }
     },
     goToCheckout() {
-      this.$router.push({ name: "CheckoutPage", params: { cart: this.cart } });
+      localStorage.setItem("cart", JSON.stringify(this.cart));
+      this.$router.push({ name: "Checkout" });
     },
   },
 };
 </script>
-
-<style></style>

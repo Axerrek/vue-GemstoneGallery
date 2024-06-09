@@ -1,16 +1,18 @@
 <template>
-  <div class="checkout">
+  <div class="main">
     <h1>Podsumowanie Zakupów</h1>
-    <div v-if="cart.length">
-      <div v-for="gem in cart" :key="gem.id" class="cart-item">
-        <h2>{{ gem.name }}</h2>
-        <p>{{ gem.price }} PLN</p>
+    <div v-if="cartItems.length" class="cart-items">
+      <div v-for="gem in cartItems" :key="gem.id" class="cart-item">
+        <h2>{{ gem.name }} x {{ gem.quantity }}</h2>
+        <p>{{ gem.price * gem.quantity }} PLN</p>
       </div>
-      <h2>Razem: {{ cartTotal }} PLN</h2>
-      <button @click="confirmPurchase">Potwierdź Zakup</button>
     </div>
     <div v-else>
       <p>Koszyk jest pusty.</p>
+    </div>
+    <div v-if="cartItems.length">
+      <h2>Razem: {{ cartTotal }} PLN</h2>
+      <button @click="confirmPurchase">Potwierdź Zakup</button>
     </div>
   </div>
 </template>
@@ -20,38 +22,28 @@ export default {
   name: "CheckoutPage",
   data() {
     return {
-      cart: [],
+      cartItems: [],
     };
   },
   computed: {
     cartTotal() {
-      return this.cart.reduce((total, gem) => total + gem.price, 0);
+      return this.cartItems.reduce(
+        (total, gem) => total + gem.price * gem.quantity,
+        0
+      );
     },
   },
   methods: {
     confirmPurchase() {
       alert("Dziękujemy za zakup!");
-      this.$router.push({ path: "/" });
+      this.$router.push({ name: "Home" });
     },
   },
   mounted() {
-    const cart = this.$route.query.cart;
+    const cart = localStorage.getItem("cart");
     if (cart) {
-      this.cart = JSON.parse(cart);
+      this.cartItems = JSON.parse(cart);
     }
   },
 };
 </script>
-
-<style>
-.checkout {
-  text-align: center;
-}
-.cart-item {
-  border: 1px solid #ddd;
-  margin: 10px;
-  padding: 10px;
-  width: 200px;
-  display: inline-block;
-}
-</style>

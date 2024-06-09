@@ -26,7 +26,6 @@ const routes = [
     path: "/checkout",
     name: "Checkout",
     component: Checkout,
-    props: true,
   },
 ];
 
